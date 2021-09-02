@@ -15,14 +15,26 @@ const PetForm = () => {
                 <div className="form-group">
                     <label htmlFor="">Name:</label>
                     <input onChange = {(e)=>setName(e.target.value)} type="text" name="" id="" className="form-control" />
+                    {name.length < 3 || name.length > 20?
+                    <p className="text-danger">Name of pet must be between 3-20 characters</p>:
+                    ""
+                    }
+
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Type:</label>
                     <input onChange = {(e)=>setType(e.target.value)}type="text" name="" id="" className="form-control" />
                 </div>
+                {type.length <1?<p className="text-danger">Type is required</p>:""}
                 <div className="form-group">
                     <label htmlFor="">Service Requested:</label>
-                    <select onChange = {(e)=>setService(e.target.value)}name="" id="" className= "form-control">
+                    {service.length <1?<p className="text-danger">Please Select a Service</p>:""}
+                    <select onChange = {(e)=>setService(e.target.value)}name="" id="" className= "form-select">
+                        {/* <optgroup label="Services">
+                            <option>Please select a service</option>
+                        </optgroup> */}
+                        {/* <option disabled="true" value="">Please Select a Service</option> */}
+                        <option style={{display:"none"}}>Please Select One Service</option>
                         <option value="Regular Grooming (Shampoo wash + haircut)">Regular Grooming (Shampoo wash + haircut)</option>
                         <option value="Regular Grooming Plus (Shampoo wash + haircut + nails/claws clipping)">Regular Grooming Plus (Shampoo wash + haircut + nails/claws clipping)</option>
                         <option value="My pet lives better than you (Regular Grooming Plus + massage + day care + hair bow/bow tie)">My pet lives better than you (Regular Grooming Plus + massage + day care + hair bow/bow tie)</option>
