@@ -1,0 +1,29 @@
+.newNinjaForm{
+    border: 1px solid black;
+    box-shadow: 3px 3px gray;
+    padding: 25px;
+    background-color: rgba(172, 185, 189, 0.555);
+    border-radius: 10px;
+}
+
+
+.ninja{
+    color:crimson;
+    width:30%;
+    display:inline-block;
+    background-color: aquamarine;
+    animation: slide-inn 3s;
+    margin: 10px;
+}
+
+@keyframes slide-inn {
+    from{
+        transform:translateX(1600px);
+    }
+    to{
+        transform:translateX(0px)
+    }
+}
+
+
+
