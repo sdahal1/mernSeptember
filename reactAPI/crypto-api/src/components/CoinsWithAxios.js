@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
-const Coins = () => {
+const CoinsWithAxios = () => {
 
     const [allCoins, setAllCoins] = useState([])
     // const [allPokemon, setAllPokemon] = useState([])
@@ -8,11 +9,10 @@ const Coins = () => {
 
     const clickHandler = ()=>{
     console.log("clicked!")
-    fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false")
-      .then(res=>{
-        
-        return res.json()
-      }) //.then() means when the response is recieved back successfully from the api call, what to do with it
+
+
+
+    axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false")
       .then(res=>{
         console.log("the response looks like this")
         console.log(res)
@@ -20,11 +20,11 @@ const Coins = () => {
 
         //save the response into my state variable
 
-        res.sort(function (a, b) {
+        res.data.sort(function (a, b) {
             return b.current_price - a.current_price;
           });
         
-        setAllCoins(res)
+        setAllCoins(res.data)
       })
       .catch(err=>{
         console.log(err)
@@ -51,4 +51,4 @@ const Coins = () => {
 };
 
 
-export default Coins;
+export default CoinsWithAxios;
