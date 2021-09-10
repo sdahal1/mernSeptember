@@ -69,14 +69,15 @@ const SearchForm = () => {
                </div>
                <div className="col-auto">
                     <input onChange = {(e)=>changeHandler(e)} type="number" name="id" id="" className="form-control" />
-                    {/* <input onChange = {(e)=>setFormInfo({...formInfo, [e.target.name]:e.target.value})} type="number" name="id" id="" className="form-control" /> */}
+                   
 
                </div>
                <div className="col-auto">
                     <input className = "btn btn-success" type="submit" value="Search" />
                </div>
             </form>
-            
+
+           
         </div>
         // <div class="row g-3 align-items-center">
         //     <div class="col-auto">
