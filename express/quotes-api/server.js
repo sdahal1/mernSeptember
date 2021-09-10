@@ -8,8 +8,8 @@ const port = 8000;
     //return something
 // }
 
-app.get("/api/",()=>{
-    return {status:"OK", msg: "Hello World" }
+app.get("/api",(req,res)=>{
+    res.json({status: "OK", msg:"Hello Express!" })
 })
 
 
