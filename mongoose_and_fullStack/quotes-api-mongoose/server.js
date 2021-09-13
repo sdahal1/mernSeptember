@@ -14,9 +14,4 @@ require("./server/routes/quote.routes")(app)
 
 
 
-
-
-
-
-
 app.listen( port, () => console.log(`Listening on port: ${port}`) );
