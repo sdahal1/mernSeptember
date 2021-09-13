@@ -27,6 +27,10 @@ const SearchForm = () => {
                 setCategories(Object.keys(res.data))
             })
             .catch(err=> console.log(err))
+        
+            console.log("wazzzaaaap!")
+
+        
     },[])
 
     //this changeHandler is to keep track of inputs changing in the form and it will update by  state variable collecting the formInfo with the info form the form

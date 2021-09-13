@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from "react-router";
 import axios from 'axios';
+import Planets from './Planets';
 
 
 const Display = () => {
@@ -31,12 +32,7 @@ const Display = () => {
                     <h3>Mass: {info.mass}</h3>
                 </>:
                 category=="planets"?
-                <>
-                    
-                    <h3>Name: {info.name}</h3>
-                    <h3>Climate: {info.climate}</h3>
-                    <h3>Terrain: {info.terrain}</h3>
-                </>:
+                <Planets name = {info.name} cli = {info.climate} terrain = {info.terrain}></Planets>:
                 category=="films"?
                 <>
                     

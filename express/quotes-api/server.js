@@ -1,8 +1,10 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 8000;
 app.use( express.json() );
 app.use( express.urlencoded({ extended: true }) );
+app.use(cors())
 
 
 const quotesTable= [
@@ -26,7 +28,7 @@ app.get("/api/quotes", (req,res)=>{
     res.json({
         status: "OK",
         count: quotesTable.length,
-        data: quotesTable
+        results: quotesTable
     })
 })
 
@@ -36,7 +38,7 @@ app.post("/api/quotes", (req,res)=>{
     res.json({
         status: "OK",
         count: quotesTable.length,
-        data: quotesTable
+        results: quotesTable
     })
 })
 
@@ -44,7 +46,7 @@ app.get("/api/quotes/:idx",(req,res)=>{
     // const {idx} = req.params
     console.log("REQ PARAMS IS THIS -->", req.params)
     res.json({
-        data: quotesTable[req.params.idx],
+        results: quotesTable[req.params.idx],
         msg:"ok"
     })
 })
@@ -55,7 +57,7 @@ app.put("/api/quotes/:idx", (req,res)=>{
     res.json({
         status: "OK",
         count: quotesTable.length,
-        data: quotesTable
+        results: quotesTable
     })
 })
 
@@ -64,7 +66,7 @@ app.delete("/api/quotes/:idx", (req,res)=>{
     res.json({
         status: "OK",
         count: quotesTable.length,
-        data: quotesTable
+        results: quotesTable
     })
 })
 
