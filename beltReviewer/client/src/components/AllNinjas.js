@@ -20,7 +20,7 @@ const AllNinjas = () => {
             <h3>All the ninjas</h3>
             {/* display all the ninjas */}
             {allNinjas.map((ninja,i)=>{
-                return <div className="card">
+                return <div key = {i} className="card">
                 <div className="card-body">
                   <h4 className="card-title">{ninja.name}</h4>
                   <p className="card-text">Graduation Date: {ninja.graduationDate}</p>
