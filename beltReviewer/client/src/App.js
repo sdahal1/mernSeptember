@@ -3,6 +3,9 @@ import './App.css';
 import {useState} from 'react'
 import AllNinjas from './components/AllNinjas';
 import NewNinjaForm from './components/NewNinjaForm';
+import OneNinja from './components/OneNinja';
+import Edit from './components/Edit';
+
 import {
   BrowserRouter,
   Switch,
@@ -31,6 +34,12 @@ function App() {
           </Route>
           <Route exact path="/new">
             <NewNinjaForm></NewNinjaForm>
+          </Route>
+          <Route exact path= "/ninja/:idParam">
+            <OneNinja></OneNinja>
+          </Route>
+          <Route exact path = "/ninja/edit/:idParam">
+            <Edit></Edit>
           </Route>
         </Switch>
         

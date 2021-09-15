@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const AllNinjas = () => {
 
@@ -10,7 +11,7 @@ const AllNinjas = () => {
     useEffect(()=>{
         axios.get("http://localhost:8000/api/ninjas")
             .then(res=>{
-                console.log("******res is this-->", res)
+                // console.log("******res is this-->", res)
                 setAllNinjas(res.data.results)
             })
             .catch(err=> console.log("ERRORRRR-->", err))
@@ -22,7 +23,7 @@ const AllNinjas = () => {
             {allNinjas.map((ninja,i)=>{
                 return <div key = {i} className="card">
                 <div className="card-body">
-                  <h4 className="card-title">{ninja.name}</h4>
+                  <h4 className="card-title"><Link to={`/ninja/${ninja._id}`}>{ninja.name}</Link>| <Link to = {`/ninja/edit/${ninja._id}`} className="btn btn-info">Edit</Link></h4>
                   <p className="card-text">Graduation Date: {ninja.graduationDate}</p>
                   <p className="card-text">Number of Projects: {ninja.numProjects}</p>
                   <p className="card-text">Is Veteran: {ninja.isVeteran? "Veteran": "Not Veteran"}</p>
