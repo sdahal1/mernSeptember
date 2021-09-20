@@ -30,6 +30,40 @@ class MinHeap{
         return this;
 
     }
+
+    // removes first number (index 1) and restructures tree to make sure everything still works
+    removeValue(){
+        // swap the last element in the heap with the first
+        [this.heap[1], this.heap[this.heap.length - 1]] = [this.heap[this.heap.length - 1], this.heap[1]];
+
+        // remove teh last element
+        this.heap.pop();
+
+        // estavblish starting index to check and children
+        let currentIndex = 1;
+        let leftChild = 2 * currentIndex;
+        let rightChild = 2 * currentIndex + 1;
+        // while loop to run if the current index is greater than the left or right child
+        while(((this.heap[currentIndex] > this.heap[leftChild]) || (this.heap[currentIndex] > this.heap[rightChild]))){
+            // check if the left child or right child is smaller, swap with the smaller child (smaller number has to be above larger number)
+            if(this.heap[leftChild] < this.heap[rightChild]){
+                // if left child is smaller, swap with left
+                [this.heap[currentIndex], this.heap[leftChild]] = [this.heap[leftChild], this.heap[currentIndex]];
+                // update the current index to check if we need to keep moving it
+                currentIndex = leftChild;
+                leftChild = 2 * currentIndex;
+                rightChild = 2 * currentIndex + 1;
+            }
+            // else the right child will be smaller, swap with right, update currentIndex
+            else {
+                [this.heap[currentIndex], this.heap[rightChild]] = [this.heap[rightChild], this.heap[currentIndex]];
+                currentIndex = rightChild;
+                leftChild = 2 * currentIndex;
+                rightChild = 2 * currentIndex + 1;
+            }
+        }
+        return this;
+    }
 }
 
 

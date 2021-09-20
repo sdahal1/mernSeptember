@@ -9,3 +9,5 @@ module.exports = app => {
     app.delete("/api/ninjas/:id", NinjaController.deleteNinja);
    
 }
+
+//a variable in a route is called a route parameter. the ":" makes something a variable in the route and the "id" is a route parameter

@@ -6,17 +6,18 @@ module.exports.findAllNinjas = (req,res)=>{
     Ninja.find()
         .then(allNinjas=>{
             res.json({results: allNinjas})
+            
         })
         .catch(err=>{
             res.json({err:err})
         })
+    
 }
-
 
 module.exports.createNewNinja = (req,res)=>{
     Ninja.create(req.body)
         .then(newNinjaObj=>{
-            res.json({results: newNinjaObj })
+            res.json({results: newNinjaObj})
         })
         .catch(err=>{
             res.json({err:err})

@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react'
 import AllNinjas from './components/AllNinjas';
 import NewNinjaForm from './components/NewNinjaForm';
 import OneNinja from './components/OneNinja';
@@ -10,7 +9,7 @@ import {
   BrowserRouter,
   Switch,
   Route,
-  Link 
+  Link //link is like a href but without reloading the page
 } from "react-router-dom";
 
 
@@ -29,7 +28,7 @@ function App() {
 
 
         <Switch>
-          <Route exact path= "/">
+          <Route exact path= "/"> 
             <AllNinjas></AllNinjas>
           </Route>
           <Route exact path="/new">
