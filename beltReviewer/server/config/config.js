@@ -1,8 +1,10 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const db_name = "wall_of_ninjas_db";
 
+
 //mongoose connection/config
-mongoose.connect(`mongodb+srv://root:root@mern.yukfl.mongodb.net/${db_name}?retryWrites=true&w=majority`, {
+mongoose.connect(`mongodb+srv://root:${process.env.MONGODB_PASSWORD}@mern.yukfl.mongodb.net/${db_name}?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

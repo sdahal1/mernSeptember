@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express"); //import express--> which allows us to build a REST api
 const cors = require("cors") //cross-origin-resource-sharing ---> this allows the express application to give permission to react application to share data back and forth
 const app = express(); //create a variable "app" which is an instance of express. 
@@ -7,6 +8,7 @@ const port = 8000;
 app.use( express.json() ); //tells my app that it can parse json
 app.use( express.urlencoded({ extended: true }) ); //tells my app that it can gather form information
 app.use(cors()); //tells the app that it is allowed to share resources with a react application
+app.use(express.static("images")) //tells the application which folder to serve images from
 
 
 

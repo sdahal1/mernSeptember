@@ -11,7 +11,8 @@ const NewNinjaForm = () => {
         numProjects: null,
         graduationDate: null,
         isVeteran: false,
-        profilePicUrl: null
+        profilePicUrl: null,
+        photo:null
     })
 
     let [validationErrors, setValidationErrors] = useState({})
@@ -34,10 +35,23 @@ const NewNinjaForm = () => {
         }
     }
 
+    const handlePhoto = (e) => {
+        setFormInfo({...formInfo, photo: e.target.files[0]});
+    }
+
     const submitHandler = (e)=>{
         e.preventDefault();
+        const formData = new FormData();
+        formData.append('name', formInfo.name);
+        formData.append('numProjects', formInfo.numProjects);
+        formData.append('graduationDate', formInfo.graduationDate);
+        formData.append('isVeteran', formInfo.isVeteran);
+        formData.append('profilePicUrl', formInfo.profilePicUrl);
+        formData.append('photo', formInfo.photo);
+        console.log("form data variable looks like this--->", formData)
+
         console.log("submitted with this info-->", formInfo)
-        axios.post("http://localhost:8000/api/ninjas", formInfo)
+        axios.post("http://localhost:8000/api/ninjas", formData)
             .then(res=>{
                 console.log("response after submitting post request-->", res)
                 if(res.data.err){ //if there is validation errors
@@ -56,7 +70,7 @@ const NewNinjaForm = () => {
     return (
         <div>
             <h3>Create a new ninja below</h3>
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} encType='multipart/form-data'>
                 <div className="form-group">
                     <label htmlFor="">Name:</label>
                     <input onChange = {changeHandler} type="text" name="name" id="" className="form-control" />
@@ -78,8 +92,11 @@ const NewNinjaForm = () => {
                     <label htmlFor="">Profile Picture URL:</label>
                     <input onChange = {changeHandler} type="text" name="profilePicUrl" id="" className="form-control" />
                     <p className="text-danger">{validationErrors.profilePicUrl?.message}</p>
-
-
+                </div>
+                <div className="form-group">
+                    <label htmlFor="">Upload picture:</label>
+                    <input onChange = {handlePhoto} type="file" accept=".png, .jpg, .jpeg" name="photo" id="" className="form-control" />
+                   
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Veteran?</label>

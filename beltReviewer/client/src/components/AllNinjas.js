@@ -44,7 +44,10 @@ const AllNinjas = () => {
                   <p className="card-text">Graduation Date: {ninja.graduationDate}</p>
                   <p className="card-text">Number of Projects: {ninja.numProjects}</p>
                   <p className="card-text">Is Veteran: {ninja.isVeteran? "Veteran": "Not Veteran"}</p>
+                  {ninja.photo?
+                  <p><img src={`http://localhost:8000/${ninja.photo}`} alt="" height="100px" width="100px"/></p>:
                   <p><img src={ninja.profilePicUrl} alt="" height="100px" width="100px"/></p>
+                }
                   <p><button onClick = {(e)=>deleteClickHandler(e,ninja._id)} className="btn btn-danger">Delete Ninja</button></p>
                   {/* <a href="#!" className="btn btn-primary">Go somewhere</a> */}
                 </div>

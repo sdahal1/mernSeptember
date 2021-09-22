@@ -15,13 +15,40 @@ module.exports.findAllNinjas = (req,res)=>{
 }
 
 module.exports.createNewNinja = (req,res)=>{
-    Ninja.create(req.body)
+    const name = req.body.name;
+    const numProjects= req.body.numProjects;
+    const graduationDate = req.body.graduationDate;
+    const isVeteran = req.body.isVeteran;
+    const profilePicUrl = req.body.profilePicUrl;
+    // console.log("REQ LOOKS LIKE THIS--->", req)
+    const photo = req.file.filename;
+
+    const newNinjaData = {
+            name,
+            numProjects,
+            graduationDate,
+            isVeteran,
+            profilePicUrl,
+            photo
+        }
+    const newNinja = new Ninja(newNinjaData);
+    newNinja.save()
         .then(newNinjaObj=>{
             res.json({results: newNinjaObj})
         })
         .catch(err=>{
             res.json({err:err})
         })
+
+    // Ninja.create(req.body)
+    //     .then(newNinjaObj=>{
+    //         res.json({results: newNinjaObj})
+    //     })
+    //     .catch(err=>{
+    //         res.json({err:err})
+    //     })
+
+    
 }
 
 module.exports.findOneNinja = (req,res)=>{
