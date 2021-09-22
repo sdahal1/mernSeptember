@@ -19,6 +19,8 @@ require("./server/config/config"); //so that we can connect to mongoose--> all m
 
 //require the routes
 require("./server/routes/ninja.routes")(app)
+require("./server/routes/dojo.routes")(app)
+
 
 
 

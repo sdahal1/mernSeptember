@@ -48,10 +48,15 @@ const NewNinjaForm = () => {
         formData.append('isVeteran', formInfo.isVeteran);
         formData.append('profilePicUrl', formInfo.profilePicUrl);
         formData.append('photo', formInfo.photo);
-        console.log("form data variable looks like this--->", formData)
+        console.log("form data variable looks like this--->", Array.from(formData))
 
         console.log("submitted with this info-->", formInfo)
-        axios.post("http://localhost:8000/api/ninjas", formData)
+        // axios.post("http://localhost:8000/api/ninjas", formData)
+        axios({
+            method: 'post',
+            url: 'http://localhost:8000/api/ninjas',
+            data: formInfo
+            })
             .then(res=>{
                 console.log("response after submitting post request-->", res)
                 if(res.data.err){ //if there is validation errors

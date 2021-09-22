@@ -24,6 +24,10 @@ const NinjaSchema = new mongoose.Schema({ //instructions to create a table in my
     },
     photo:{
         type:String
+    },
+    dojo_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Dojo"
     }
 
 

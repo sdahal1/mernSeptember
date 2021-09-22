@@ -4,6 +4,7 @@ const Ninja = require("../models/ninja.model");
 
 module.exports.findAllNinjas = (req,res)=>{
     Ninja.find()
+        .populate("dojo_id")
         .then(allNinjas=>{
             res.json({results: allNinjas})
             
@@ -20,8 +21,13 @@ module.exports.createNewNinja = (req,res)=>{
     const graduationDate = req.body.graduationDate;
     const isVeteran = req.body.isVeteran;
     const profilePicUrl = req.body.profilePicUrl;
-    // console.log("REQ LOOKS LIKE THIS--->", req)
-    const photo = req.file.filename;
+    const dojo_id = req.body.dojo_id
+    console.log("REQ LOOKS LIKE THIS--->", req.body)
+    let photo=null;
+    if(req.file){
+        console.log("you uploaded a file!!!")
+        photo = req.file.filename;
+    }
 
     const newNinjaData = {
             name,
@@ -29,7 +35,8 @@ module.exports.createNewNinja = (req,res)=>{
             graduationDate,
             isVeteran,
             profilePicUrl,
-            photo
+            dojo_id,
+            photo: photo
         }
     const newNinja = new Ninja(newNinjaData);
     newNinja.save()
@@ -86,6 +93,20 @@ module.exports.deleteNinja = (req,res)=>{
         .catch(err=>{
             res.json({err:err})
         })
+}
+
+
+module.exports.findNinjasBelongingToDojo = (req,res)=>{
+    Ninja.find({dojo_id: req.params.dojoId})
+        .populate("dojo_id")
+        .then(allNinjas=>{
+            res.json({results: allNinjas})
+            
+        })
+        .catch(err=>{
+            res.json({err:err})
+        })
+    
 }
 
 

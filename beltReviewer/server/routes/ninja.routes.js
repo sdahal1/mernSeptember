@@ -30,11 +30,10 @@ module.exports = app => {
     app.get("/api/ninjas/:id", NinjaController.findOneNinja);
     app.put("/api/ninjas/:id", NinjaController.updateExistingNinja);
     app.delete("/api/ninjas/:id", NinjaController.deleteNinja);
-    // app.post('/stats', upload.single('uploaded_file'), function (req, res) {
-    //     // req.file is the name of your file in the form above, here 'uploaded_file'
-    //     // req.body will hold the text fields, if there were any 
-    //     console.log(req.file, req.body)
-    //  });
+    
+
+    //show all the ninjas that belong to a dojo given a dojo id
+    app.get("/api/ninjas/dojo/:dojoId", NinjaController.findNinjasBelongingToDojo )
 }
 
 //a variable in a route is called a route parameter. the ":" makes something a variable in the route and the "id" is a route parameter
