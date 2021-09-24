@@ -22,11 +22,14 @@ module.exports.createNewNinja = (req,res)=>{
     const isVeteran = req.body.isVeteran;
     const profilePicUrl = req.body.profilePicUrl;
     const dojo_id = req.body.dojo_id
-    console.log("REQ LOOKS LIKE THIS--->", req.body)
+
+
     let photo=null;
     if(req.file){
         console.log("you uploaded a file!!!")
         photo = req.file.filename;
+    }else{
+        console.log("NO FILE DETECTED")
     }
 
     const newNinjaData = {
@@ -35,25 +38,18 @@ module.exports.createNewNinja = (req,res)=>{
             graduationDate,
             isVeteran,
             profilePicUrl,
-            dojo_id,
+            // dojo_id,
             photo: photo
         }
-    const newNinja = new Ninja(newNinjaData);
-    newNinja.save()
+    // console.log("new ninja data", newNinjaData)
+
+    Ninja.create(newNinjaData)
         .then(newNinjaObj=>{
             res.json({results: newNinjaObj})
         })
         .catch(err=>{
             res.json({err:err})
         })
-
-    // Ninja.create(req.body)
-    //     .then(newNinjaObj=>{
-    //         res.json({results: newNinjaObj})
-    //     })
-    //     .catch(err=>{
-    //         res.json({err:err})
-    //     })
 
     
 }

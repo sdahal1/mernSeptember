@@ -49,7 +49,7 @@ const AllNinjas = () => {
                   <p><img src={ninja.profilePicUrl} alt="" height="100px" width="100px"/></p>
                     }
                   <p><button onClick = {(e)=>deleteClickHandler(e,ninja._id)} className="btn btn-danger">Delete Ninja</button></p>
-                  {/* <a href="#!" className="btn btn-primary">Go somewhere</a> */}
+                  
                 </div>
               </div>
             })}

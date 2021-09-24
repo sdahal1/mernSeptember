@@ -20,7 +20,7 @@ const NinjaSchema = new mongoose.Schema({ //instructions to create a table in my
     },
     profilePicUrl:{
         type:String,
-        required: [true, "Profile pic is required"]
+        // required: [true, "Profile pic is required"]
     },
     photo:{
         type:String

@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const db_name = "wall_of_ninjas_db";
+const db_name = "wall_of_ninjas_dbbb";
 
 
 //mongoose connection/config

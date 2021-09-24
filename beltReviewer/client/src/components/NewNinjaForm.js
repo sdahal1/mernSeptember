@@ -7,12 +7,12 @@ const NewNinjaForm = () => {
     const history = useHistory(); //this is for redirecting when we submit the form
 
     let [formInfo, setFormInfo] = useState({
-        name: null,
-        numProjects: null,
-        graduationDate: null,
+        name: "",
+        numProjects: "",
+        graduationDate: "",
         isVeteran: false,
-        profilePicUrl: null,
-        photo:null
+        profilePicUrl: "",
+        photo:""
     })
 
     let [validationErrors, setValidationErrors] = useState({})
@@ -48,14 +48,12 @@ const NewNinjaForm = () => {
         formData.append('isVeteran', formInfo.isVeteran);
         formData.append('profilePicUrl', formInfo.profilePicUrl);
         formData.append('photo', formInfo.photo);
-        console.log("form data variable looks like this--->", Array.from(formData))
 
-        console.log("submitted with this info-->", formInfo)
-        // axios.post("http://localhost:8000/api/ninjas", formData)
+        
         axios({
             method: 'post',
             url: 'http://localhost:8000/api/ninjas',
-            data: formInfo
+            data: formData
             })
             .then(res=>{
                 console.log("response after submitting post request-->", res)
